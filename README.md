@@ -1,5 +1,5 @@
 # Fast Surface Reconstruction for Point Clouds 
-# for MapMaker
+# MapMaker add-in
 
 #### This work leverages the Neural Kernel Surface Reconstruction (CUDA) code developed by NVIDIA Corp. and the Authors cited below and blends it with our propietary MapMaker pipeline.
 
