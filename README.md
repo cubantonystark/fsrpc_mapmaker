@@ -9,7 +9,7 @@
 - Linux user must be created as ```mapmaker```
 - NVIDIA RTX20, RTX30 or RTX40 GPU with at least 8 Gb VRAM</ul>
 
-## Installation
+## Installation (WIP)
 
 Download Anaconda from https://www.anaconda.com/download#downloads and install, then type the commands listed below.
 
