@@ -5,7 +5,8 @@
 
 ## Base Requirements
 
-- Ubuntu 22.04<br>
+- Windows Subsystem for Linux (WSL) with Ubuntu 22.04<br>
+- Linux user must be created as <ul>mapmaker</ul>
 - NVIDIA RTX20, RTX30 or RTX40 GPU with at least 8 Gb VRAM</ul>
 
 ## Installation
