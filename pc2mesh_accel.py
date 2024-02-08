@@ -233,7 +233,7 @@ class pc2mesh_gpu():
         path, file = os.path.split(str(filename))
         
         #print("Loading PointCloud")
-        logging.info("Loading PointCloud")        
+        #logging.info("Loading PointCloud")        
             
         pcd = o3d.io.read_point_cloud(str(filename))
             
