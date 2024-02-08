@@ -23,7 +23,7 @@ export TORCH_VERSION=2.0.0
 export CUDA_VERSION=cu118
 pip install -U nksr -f https://nksr.huangjh.tech/whl/torch-${TORCH_VERSION}+${CUDA_VERSION}.html
 pip install python-pycg[full] -f https://pycg.s3.ap-northeast-1.amazonaws.com/packages/index.html
-git clone https://github.com/cubantonystark/fsrpc_mapmapker.git
+git clone https://github.com/cubantonystark/fsrpc_mapmaker.git
 ```
 
 ## Citation
