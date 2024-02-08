@@ -325,7 +325,7 @@ class pc2mesh_gpu():
             # Should the reconstruction fail using NKSR, we will use Open3D on the CPU to reconstruct that way
             
             #print("\nThis Reconstruction exceeds available GPU Memory. Switiching to CPU Reconstruction.\n")
-            logging.info("\nThis PointCloud is not suitable for GPU Reconstruction. Switching to CPU.")
+            #logging.info("\nThis PointCloud is not suitable for GPU Reconstruction. Switching to CPU.")
             
             with open('/mnt/d/Projects/map_maker_1_2/ARTAK_MM/LOGS/gpu_status.txt', 'w') as msg:
                 
