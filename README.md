@@ -14,6 +14,7 @@
 Download Anaconda from https://www.anaconda.com/download#downloads and install, then type the commands listed below.
 
 ```shell
+sudo apt-get update 
 sudo apt install build-essential
 conda create -n nksr python=3.10
 conda activate nksr
@@ -25,6 +26,7 @@ export CUDA_VERSION=cu118
 pip install -U nksr -f https://nksr.huangjh.tech/whl/torch-${TORCH_VERSION}+${CUDA_VERSION}.html
 pip install python-pycg[full] -f https://pycg.s3.ap-northeast-1.amazonaws.com/packages/index.html
 git clone https://github.com/cubantonystark/fsrpc_mapmaker.git
+sudo apt-get install libgl1
 sudo nano .bashrc
 ```
 #### Place the following code at the end of .bashrc
