@@ -27,7 +27,7 @@ pip install python-pycg[full] -f https://pycg.s3.ap-northeast-1.amazonaws.com/pa
 git clone https://github.com/cubantonystark/fsrpc_mapmaker.git
 sudo nano .bashrc
 ```
-#### place the following code at the end of .bashrc
+#### Place the following code at the end of .bashrc
 
 ```shell
 #!/bin/bash
