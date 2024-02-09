@@ -172,7 +172,6 @@ class pc2mesh_gpu():
         try:
             
             filename = filename[0]
-            print(filename)
             
         except IndexError:
 
@@ -267,6 +266,8 @@ class pc2mesh_gpu():
             mesh.triangle_normals = o3d.utility.Vector3dVector([])
             
             file = "pointclouds/"+file.replace("ply", "obj")
+            input_xyz = torch.from_numpy(np.asarray(test_geom.points)).float().to(device)
+            input_normal = torch.from_numpy(np.asarray(test_geom.normals)).float().to(device)
             
             file = file.replace("ds_", "")
             
