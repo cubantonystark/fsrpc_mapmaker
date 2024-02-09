@@ -34,6 +34,10 @@ sudo nano .bashrc
 eval "(conda shell.bash hook)" > tmp.txt
 source activate nksr
 python pc2mesh_accel.py
+cd fsrpc_mapmaker
+sudo mkdir pointclouds
+sudo chmod 777 pointclouds
+cd ..
 ```
 
 ## Citation
