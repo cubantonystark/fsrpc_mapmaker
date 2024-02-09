@@ -1,4 +1,4 @@
-# Fast Surface Recionstruction for PointClouds using NKSR
+# Fast Surface Reconstruction for PointClouds using NKSR
 # To be included with Mapmaker
 # Version 4.0. Copyright 2024, Reynel Rodriguez and EolianVR, Inc.
 
@@ -11,7 +11,6 @@ from PIL import Image
 from pyntcloud import PyntCloud
 
 import subprocess
-from subprocess import check_output
 
 level = logging.INFO
 format = '%(message)s'
@@ -174,16 +173,7 @@ class pc2mesh_gpu():
     
         def load_e57(filename):
     
-            ms = pymeshlab.MeshSet()
-            ms.load_new_mesh(filename)
-    
-            ms.save_current_mesh(filename,
-                                 save_vertex_color=True,
-                                 save_vertex_coord=True,
-                                 save_vertex_normal=True,
-                                 save_face_color=True,
-                                 save_wedge_texcoord=True,
-                                 save_wedge_normal=True)
+
     
             return
         
@@ -192,6 +182,7 @@ class pc2mesh_gpu():
         try:
             
             filename = filename[0]
+            print(filename)
             
         except IndexError:
         
@@ -217,9 +208,20 @@ class pc2mesh_gpu():
             filename = filename.replace("pts", "ply")        
             
         elif filename.endswith(".e57"):
-            
+
             logging.info("Converting to PLY")
-            load_e57(filename)
+
+            ms = pymeshlab.MeshSet()
+            ms.load_new_mesh(filename)
+
+            ms.save_current_mesh(filename.replace('e57', 'ply'),
+                                 save_vertex_color=True,
+                                 save_vertex_coord=True,
+                                 save_vertex_normal=True,
+                                 save_face_color=True,
+                                 save_wedge_texcoord=True,
+                                 save_wedge_normal=True)
+
             filename = filename.replace("e57", "ply")  
             
         o3d.utility.set_verbosity_level(o3d.utility.VerbosityLevel.Error)
