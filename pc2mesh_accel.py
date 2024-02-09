@@ -49,6 +49,7 @@ class pc2mesh_gpu():
         face_number = 100000
         texture_size = 8192
 
+        #print("Generating ARTAK bundle")
         logging.info("Generating ARTAK bundle")
         
         ms = pymeshlab.MeshSet()
@@ -67,6 +68,7 @@ class pc2mesh_gpu():
             f_number = m.face_number()
             target_faces = int(f_number / 1.5)
 
+            #print("Target: " + str(int(target_faces)) + " F. Iter. " + str(c) + ".")
             logging.info("Target: " + str(int(target_faces)) + " F. Iter. " + str(c) + ".")
             
             ms.apply_filter('meshing_decimation_quadric_edge_collapse',
@@ -78,9 +80,9 @@ class pc2mesh_gpu():
             
             f_number = m.face_number()
             v_number = m.vertex_number()
-
             ratio = (abs(target_faces / f_number) - 1.1) * 10  # Efficiency ratio. resulting amt faces vs target amt of faces   
 
+            #print('Achieved: ' + str(f_number) + ' F. Ratio ==> ' + '%.2f' % abs(ratio) + ':1.00.')
             logging.info('Achieved: ' + str(f_number) + ' F. Ratio ==> ' + '%.2f' % abs(ratio) + ':1.00.')
             c += 1
     
@@ -88,6 +90,7 @@ class pc2mesh_gpu():
         f_number = m.face_number()
         v_number = m.vertex_number()
 
+        #print('End VC: ' + str(v_number) + '. End FC: ' + str(f_number) + ".")
         logging.info('End VC: ' + str(v_number) + '. End FC: ' + str(f_number) + ".")
         
         ms.save_current_mesh(d_filename,
@@ -106,6 +109,7 @@ class pc2mesh_gpu():
         ms.load_new_mesh(o_filename)
         ms.load_new_mesh(d_filename)    
 
+        #print("Parametrization with " + str(texture_size))
         logging.info("Parametrization with " + str(texture_size))
         
         ms.apply_filter('compute_texcoord_parametrization_triangle_trivial_per_wedge',
@@ -172,6 +176,7 @@ class pc2mesh_gpu():
         try:
             
             filename = filename[0]
+            print(filename)
             
         except IndexError:
 
@@ -221,9 +226,13 @@ class pc2mesh_gpu():
         ply_point_cloud = o3d.data.PLYPointCloud()
             
         path, file = os.path.split(str(filename))
+
+        #print("Loading PointCloud")
+        #logging.info("Loading PointCloud")
             
         pcd = o3d.io.read_point_cloud(str(filename))
 
+        #print("Downsampling")
         logging.info("Downsampling")
             
         downpcd = pcd.voxel_down_sample(voxel_size = 0.1)
@@ -261,7 +270,11 @@ class pc2mesh_gpu():
             mesh = field.extract_dual_mesh()
             mesh = vis.mesh(mesh.v, mesh.f, color = mesh.c)
 
+            #ftr = filename
+
             path, file = os.path.split(filename)
+
+            #vis.show_3d([mesh])
             
             mesh.triangle_normals = o3d.utility.Vector3dVector([])
             
@@ -276,6 +289,7 @@ class pc2mesh_gpu():
             ms = pymeshlab.MeshSet()
             ms.load_new_mesh(file) 
 
+            #print("Refining")
             logging.info("Refining")
             
             p = pymeshlab.PercentageValue(25)
@@ -305,7 +319,8 @@ class pc2mesh_gpu():
             
             # Should the reconstruction fail using NKSR, we will use Open3D on the CPU to reconstruct that way
 
-            logging.info("\nThis PointCloud is not suitable for GPU Reconstruction. Switching to CPU.")
+            #print("\nThis Reconstruction exceeds available GPU Memory. Switiching to CPU Reconstruction.\n")
+            #logging.info("\nThis PointCloud is not suitable for GPU Reconstruction. Switching to CPU.")
             
             with open('/mnt/d/Projects/map_maker_1_2/ARTAK_MM/LOGS/gpu_status.txt', 'w') as msg:
                 
@@ -325,6 +340,7 @@ class pc2mesh_gpu():
             
         except (utm.error.OutOfRangeError, UnboundLocalError) as err:
 
+            #print("Coordinate values out of range. Will encode lat=0, lon=0.")
             logging.info("Coordinate values out of range. Will encode lat=0, lon=0.")
             
             lat = 0
@@ -349,6 +365,8 @@ class pc2mesh_gpu():
         zip_file = o_filename.replace('.obj', '')+ '.zip'
         
         tgt_folder = o_filename.replace('.obj', '').replace('pointclouds/', '')
+
+        #shutil.copy(zip_file, '/mnt/d/Projects/map_maker_1_2/ARTAK_MM/DATA/PointClouds/LowRes/'+zip_file.replace('pointclouds/', ''))
         
         shutil.copy(zip_file, '/mnt/c/map_maker_1_2/ARTAK_MM/POST/Lidar/'+tgt_folder+'/Data/'+zip_file.replace('pointclouds/', ''))
         
