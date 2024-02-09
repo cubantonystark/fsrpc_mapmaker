@@ -387,7 +387,7 @@ class pc2mesh_gpu():
          
             shutil.copy('pointclouds/texture.png', '/mnt/c/map_maker_1_2/ARTAK_MM/POST/Lidar/'+tgt_folder+'/Data/Model/texture.png')
         
-        with open('/mnt/c/Projects/map_maker_1_2/ARTAK_MM/LOGS/gpu_status.txt', 'w') as msg:
+        with open('/mnt/c/map_maker_1_2/ARTAK_MM/LOGS/gpu_status.txt', 'w') as msg:
             
             msg.write('gpu_success')
                 
