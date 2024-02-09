@@ -25,8 +25,17 @@ export CUDA_VERSION=cu118
 pip install -U nksr -f https://nksr.huangjh.tech/whl/torch-${TORCH_VERSION}+${CUDA_VERSION}.html
 pip install python-pycg[full] -f https://pycg.s3.ap-northeast-1.amazonaws.com/packages/index.html
 git clone https://github.com/cubantonystark/fsrpc_mapmaker.git
+sudo nano .bashrc
 ```
+#### place the following code at the end of .bashrc
 
+```shell
+#!/bin/bash
+eval "(conda shell.bash hook)" > tmp.txt
+source activate nksr
+python pc2mesh_accel.py
+```
+<br>
 ## Citation
 
 ```bibtex
