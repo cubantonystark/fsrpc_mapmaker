@@ -186,7 +186,7 @@ class pc2mesh_gpu():
         
         ply_point_cloud = o3d.data.PLYPointCloud()
         
-        # Convert to PLY in case this is a .pts file or an e57 one
+        # Convert to PLY in case this is a pts file or an e57 one
         
         if filename.endswith("pts"):
             
