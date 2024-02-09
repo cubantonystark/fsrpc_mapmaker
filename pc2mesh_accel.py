@@ -373,7 +373,7 @@ class pc2mesh_gpu():
         
         #shutil.copy(zip_file, '/mnt/d/Projects/map_maker_1_2/ARTAK_MM/DATA/PointClouds/LowRes/'+zip_file.replace('pointclouds/', ''))
         
-        shutil.copy(zip_file, '/mnt/d/Projects/map_maker_1_2/ARTAK_MM/POST/Lidar/'+tgt_folder+'/Data/'+zip_file.replace('pointclouds/', ''))
+        shutil.copy(zip_file, '/mnt/c/map_maker_1_2/ARTAK_MM/POST/Lidar/'+tgt_folder+'/Data/'+zip_file.replace('pointclouds/', ''))
         
         os.remove(zip_file)
         
@@ -381,9 +381,9 @@ class pc2mesh_gpu():
         
         for ext in extensions:
             
-            shutil.copy(o_filename.replace('.obj', ext), '/mnt/d/Projects/map_maker_1_2/ARTAK_MM/POST/Lidar/'+tgt_folder+'/Data/Model')         
+            shutil.copy(o_filename.replace('.obj', ext), '/mnt/c/map_maker_1_2/ARTAK_MM/POST/Lidar/'+tgt_folder+'/Data/Model')         
          
-            shutil.copy('pointclouds/texture.png', '/mnt/d/Projects/map_maker_1_2/ARTAK_MM/POST/Lidar/'+tgt_folder+'/Data/Model/texture.png')
+            shutil.copy('pointclouds/texture.png', '/mnt/c/map_maker_1_2/ARTAK_MM/POST/Lidar/'+tgt_folder+'/Data/Model/texture.png')
         
         with open('/mnt/d/Projects/map_maker_1_2/ARTAK_MM/LOGS/gpu_status.txt', 'w') as msg:
             
