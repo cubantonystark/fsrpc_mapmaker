@@ -35,7 +35,7 @@ eval "(conda shell.bash hook)" > tmp.txt
 source activate nksr
 python pc2mesh_accel.py
 ```
-<br>
+
 ## Citation
 
 ```bibtex
