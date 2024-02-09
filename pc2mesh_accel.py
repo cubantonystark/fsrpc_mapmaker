@@ -170,12 +170,6 @@ class pc2mesh_gpu():
         if os.path.exists('pointlouds'):
             shutil.rmtree('pointclouds')
             os.mkdir('pointclouds')
-    
-        def load_e57(filename):
-    
-
-    
-            return
         
         filename = [f for f in glob.glob(os.getcwd()+"/pointclouds/*")]
         
@@ -185,8 +179,7 @@ class pc2mesh_gpu():
             print(filename)
             
         except IndexError:
-        
-            #print("No file passed")
+
             logging.info("No file passed")
             
             self.kill_process()
@@ -195,7 +188,7 @@ class pc2mesh_gpu():
         
         # Convert to PLY in case this is a .pts file or an e57 one
         
-        if filename.endswith(".pts"):
+        if filename.endswith("pts"):
             
             logging.info("Converting to PLY")
         
@@ -207,7 +200,7 @@ class pc2mesh_gpu():
         
             filename = filename.replace("pts", "ply")        
             
-        elif filename.endswith(".e57"):
+        elif filename.endswith("e57"):
 
             logging.info("Converting to PLY")
 
