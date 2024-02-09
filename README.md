@@ -14,6 +14,7 @@
 Download Anaconda from https://www.anaconda.com/download#downloads and install, then type the commands listed below.
 
 ```shell
+sudo apt install build-essential
 conda create -n nksr python=3.10
 conda activate nksr
 conda install -c "nvidia/label/cuda-11.8.0" cuda-toolkit
