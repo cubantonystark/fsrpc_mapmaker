@@ -235,7 +235,7 @@ class pc2mesh_gpu():
         #print("Downsampling")
         logging.info("Downsampling")
             
-        downpcd = pcd.voxel_down_sample(voxel_size = 0.1)
+        downpcd = pcd.voxel_down_sample(voxel_size = 0.02)
             
         filename = path+"/"+"ds_"+file
             
